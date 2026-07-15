@@ -16,7 +16,8 @@ export function formatCurrency(n) {
  * annualRatePct: annual interest rate as a percent, e.g. 6.5
  * termMonths: number of monthly payments
  */
-export function amortizationSchedule(principal, annualRatePct, termMonths) {
+export function amortizationSchedule(principal, annualRatePct, termMonths, options = {}) {
+  const { extraAmount = 0, extraMonth = null } = options
   const monthlyRate = annualRatePct / 100 / 12
   const payment =
     monthlyRate === 0
@@ -30,6 +31,11 @@ export function amortizationSchedule(principal, annualRatePct, termMonths) {
   for (let month = 1; month <= termMonths; month++) {
     const interest = balance * monthlyRate
     let principalPaid = payment - interest
+
+    if (month === extraMonth) {
+      principalPaid += extraAmount
+    }
+
     if (month === termMonths || principalPaid > balance) {
       principalPaid = balance
     }
