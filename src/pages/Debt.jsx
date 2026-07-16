@@ -157,6 +157,11 @@ export default function Debt() {
             <p className='text-xs uppercase tracking-widest text-inkSoft font-mono mb-2'>Avalanche</p>
             <p className='figure text-xl'>{comparison.avalanche.months} months</p>
             <p className='figure text-sm text-inkSoft'>{formatCurrency(comparison.avalanche.totalInterest)}</p>
+            {comparison.avalanche.reachedCap && (
+              <p className='text-debt text-m mt-2'>
+                Minimum payments alone won't pay this off - increase a minimum payment or add an extra amount.
+              </p>
+            )}
           </div>
           <div className='border border-line rounded p-4'>
             <p className='text-xs uppercase tracking-widest text-inkSoft font-mono mb-2'>Snowball</p>
