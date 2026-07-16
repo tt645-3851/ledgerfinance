@@ -106,6 +106,8 @@ export function simulatePayoff(debts, extraPerMonth, strategy = 'avalanche') {
   )
   const orderIds = order.map((d) => d.id)
 
+  console.log(strategy, order.map((d) => `${d.name}: apr=${d.apr}, bal=${d.balance}`))
+
   let month = 0
   let totalInterest = 0
   const history = []
@@ -150,4 +152,23 @@ export function simulatePayoff(debts, extraPerMonth, strategy = 'avalanche') {
     history,
     reachedCap: month >= maxMonths,
   }
+}
+
+export function buildPayoffComparisonChartData(comparsion) {
+  const { avalanche, snowball } = comparsion
+
+  const longerIsAvalanche = avalanche.months >= snowball.months
+  const longer = longerIsAvalanche ? avalanche.history : snowball.history
+  const shorter = longerIsAvalanche ? snowball.history : avalanche.history
+  
+  return longer.map((entry) => {
+    const match = shorter.find((s) => s.month === entry.month)
+    const shorterBalance = match ? match.totalBalance : 0
+
+    return {
+      month: entry.month,
+      avalancheBalance: longerIsAvalanche ? entry.totalBalance : shorterBalance,
+      snowballBalance: longerIsAvalanche ? shorterBalance : entry.totalBalance,
+    }
+  })
 }

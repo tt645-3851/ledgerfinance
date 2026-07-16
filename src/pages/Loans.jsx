@@ -37,13 +37,13 @@ export default function Loans() {
           </p>
           <div className='grid grid-cols-1 sm:grid-cols-3 gap-3 items-end'>
             <div className='flex flex-col gap-1'>
-            <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Loan Amount</label>
-            <input
-                type="number"
-                value={principal}
-                onChange={(e) => setPrincipal(e.target.value)}
-                placeholder='Loan amount'
-                className='border border-line rounded px-2 py-1.5 bg-white'
+              <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Loan Amount</label>
+              <input
+                  type="number"
+                  value={principal}
+                  onChange={(e) => setPrincipal(e.target.value)}
+                  placeholder='Loan amount'
+                  className='border border-line rounded px-2 py-1.5 bg-white'
               ></input>        
             </div>            
 
