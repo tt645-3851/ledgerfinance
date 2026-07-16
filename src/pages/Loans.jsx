@@ -29,66 +29,80 @@ export default function Loans() {
       
       <form
         onSubmit={handleSubmit}
-        className="border border-line rounded p-5 bg-white/40 grid grid-cols-1 sm:grid-cols-5 gap-3 items-end"
+        className="border border-line rounded p-5 bg-white/40 space-y-4"
       >
-      <div className='flex flex-col gap-1 sm:col-span-2'>
-       <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Loan Amount</label>
-       <input
-          type="number"
-          value={principal}
-          onChange={(e) => setPrincipal(e.target.value)}
-          placeholder='Loan amount'
-          className='border border-line rounded px-2 py-1.5 bg-white'
-        ></input>        
-      </div>
+        <div>
+          <p className='text-xs uppercase tracking-widest text-inkSoft font-mono mb-2'>
+            Loan terms
+          </p>
+          <div className='grid grid-cols-1 sm:grid-cols-3 gap-3 items-end'>
+            <div className='flex flex-col gap-1'>
+            <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Loan Amount</label>
+            <input
+                type="number"
+                value={principal}
+                onChange={(e) => setPrincipal(e.target.value)}
+                placeholder='Loan amount'
+                className='border border-line rounded px-2 py-1.5 bg-white'
+              ></input>        
+            </div>            
 
-      <div className='flex flex-col gap-1 sm:col-span-2'>
-       <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Extra Payment Amount</label>
-       <input
-          type="number"
-          value={extraAmount}
-          onChange={(e) => setExtraAmount(e.target.value)}
-          placeholder='Extra payment amount'
-          className='border border-line rounded px-2 py-1.5 bg-white'
-        ></input>        
-      </div>
+            <div className='flex flex-col gap-1'>
+              <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Rate</label>
+              <input
+                type="number"
+                value={rate}
+                onChange={(e) => setRate(e.target.value)}
+                placeholder='interest rate'
+                className='border border-line rounded px-2 py-1.5 bg-white'
+              ></input>        
+            </div>
 
-      <div className='flex flex-col gap-1 sm:col-span-2'>
-       <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Apply in month #</label>
-       <input
-          type="number"
-          value={extraMonth}
-          onChange={(e) => setExtraMonth(e.target.value)}
-          placeholder='Apply month for extra payment'
-          className='border border-line rounded px-2 py-1.5 bg-white'
-        ></input>        
-      </div>
+            <div className='flex flex-col gap-1'>
+              <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Months</label>
+              <input
+                type="number"
+                value={termMonths}
+                onChange={(e) => setTermMonths(e.target.value)}
+                placeholder='term months'
+                className='border border-line rounded px-2 py-1.5 bg-white'
+              ></input>        
+            </div>          
+          </div>
+        </div>
 
-      <div className='flex flex-col gap-1'>
-        <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Rate</label>
-        <input
-          type="number"
-          value={rate}
-          onChange={(e) => setRate(e.target.value)}
-          placeholder='interest rate'
-          className='border border-line rounded px-2 py-1.5 bg-white'
-        ></input>        
-      </div>
+        <div>
+          <h1 className='text-xs uppercase tracking-widest text-inkSoft font-mono mb-2'>
+            Optional Fields
+          </h1>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 items-end'>
+            <div className='flex flex-col gap-1'>
+            <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Extra Payment Amount</label>
+            <input
+                type="number"
+                value={extraAmount}
+                onChange={(e) => setExtraAmount(e.target.value)}
+                placeholder='Extra payment amount'
+                className='border border-line rounded px-2 py-1.5 bg-white'
+              ></input>        
+            </div>
 
-      <div className='flex flex-col gap-1'>
-        <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Months</label>
-        <input
-          type="number"
-          value={termMonths}
-          onChange={(e) => setTermMonths(e.target.value)}
-          placeholder='term months'
-          className='border border-line rounded px-2 py-1.5 bg-white'
-        ></input>        
-      </div>
+            <div className='flex flex-col gap-1'>
+            <label className='text-xs uppercase tracking-widest text-inkSoft font-mono'>Apply in month #</label>
+            <input
+                type="number"
+                value={extraMonth}
+                onChange={(e) => setExtraMonth(e.target.value)}
+                placeholder='Apply month for extra payment'
+                className='border border-line rounded px-2 py-1.5 bg-white'
+              ></input>        
+            </div>            
+          </div>
+        </div>
 
         <button 
           type='submit'
-          className='sm:col-span-5 justify-self-start bg-ledger text-paper px-4 py-2 rounded text-sm hover:bg-ledger-dark transition-colors'
+          className='justify-self-start bg-ledger text-paper px-4 py-2 rounded text-sm hover:bg-ledger-dark transition-colors'
         >Calculate</button>
       </form>
 
