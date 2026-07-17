@@ -43,7 +43,7 @@ export default function Layout() {
       </main>
       <footer className="border-t border-line py-4">
         <p className="max-w-5xl mx-auto px-6 text-xs text-inkSoft">
-          All figures stay in your browser until you connect a backend.
+          
         </p>
       </footer>
     </div>
